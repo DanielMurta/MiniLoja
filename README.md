@@ -1,0 +1,1 @@
+Mini loja em Python!
