@@ -1,11 +1,11 @@
 def cabecalho_loja():
     print('='*30)
-    print('   BEM-VINDO A MINI LOJA')
+    print('  \033[4;30;46m BEM-VINDO A MINI LOJA \033[m')
     print('='*30)
 
 
 def menu_loja():
-    print('MENU:')
+    print('\033[45m MENU: \033[m')
     print('COMIDAS [1]     ROUPAS     [3]')
     print('BEBIDAS [2]     BRINQUEDOS [4]')
 
@@ -18,14 +18,14 @@ while True:
     print()
     valor_total = sum(lista_de_compras)
     if valor_total != 0:
-        print(f'O valor parcial da sua compra é R${valor_total:.2f}')
-    escolha_menu = int(input('O que deseja comprar? (0 para finalizar compra): '))
+        print(f'O valor parcial da sua compra é \033[32mR${valor_total:.2f}\033[m')
+    escolha_menu = int(input('O que deseja comprar? \033[33m(0 p/ finalizar compra)\033[m: '))
     if escolha_menu == 0:
         break
     while True:
         if escolha_menu == 1:
             print('_'*50)
-            print('MENU COMIDAS:')
+            print('\033[40m MENU COMIDAS: \033[m')
             print('[1] ARROZ - R$4,99  -- [2] FEIJÃO - R$5,59'
                   '\n[3] PÃO   - R$5,49  -- [4] FRANGO - R$11,99'
                   '\n[5] Carne - R$25,50 -- [6] QUEIJO - R$15,97')
@@ -33,49 +33,68 @@ while True:
             print()
             selecao_de_comidas = int(input('Selecione o produto: ').strip())
             if selecao_de_comidas == 1:
-                lista_de_compras.append(int(input('Quantidade de ARROZ: ')) * 4.99)
+                lista_de_compras.append(int(input('Quantidade: ')) * 4.99)
             elif selecao_de_comidas == 2:
-                lista_de_compras.append(int(input('Quantidade de FEIJÃO: ')) * 5.59)
+                lista_de_compras.append(int(input('Quantidade: ')) * 5.59)
             elif selecao_de_comidas == 3:
-                lista_de_compras.append(int(input('Quantidade de LEITE: ')) * 5.49)
+                lista_de_compras.append(int(input('Quantidade: ')) * 5.49)
             elif selecao_de_comidas == 4:
-                lista_de_compras.append(int(input('Quantidade de FRANGO: ')) * 11.99)
+                lista_de_compras.append(int(input('Quantidade: ')) * 11.99)
             elif selecao_de_comidas == 5:
-                lista_de_compras.append(int(input('Quantidade de CARNE: ')) * 25.50)
+                lista_de_compras.append(int(input('Quantidade: ')) * 25.50)
             elif selecao_de_comidas == 6:
-                lista_de_compras.append(int(input('Quantidade de QUEIJO: ')) * 15.97)
+                lista_de_compras.append(int(input('Quantidade: ')) * 15.97)
             else:
-                print('Esse número digitado não corresponde a nenhuma produto!')
+                print('\033[31mEsse número digitado não corresponde a nenhuma produto!\033[m')
 
         elif escolha_menu == 2:
             print('_'*50)
-            print('MENU BEBIDAS')
+            print('\033[40m MENU BEBIDAS: \033[m')
             print('[1] LEITE - R$4,69 -- [2] REFRIGERANTE 2L - R$9,50'
                   '\n[3] SUCO  - R$3,59 -- [4] CAFÉ            - R$1,99')
 
             print()
             selecao_de_bebidas = int(input('Selecione o Produto: ').strip())
             if selecao_de_bebidas == 1:
-                lista_de_compras.append(int(input('Quantidade de LEITE: ')) * 4.69)
+                lista_de_compras.append(int(input('Quantidade: ')) * 4.69)
             elif selecao_de_bebidas == 2:
-                lista_de_compras.append(int(input('Quantidade de REFRIGERANTE: ')) * 9.5)
+                lista_de_compras.append(int(input('Quantidade: ')) * 9.5)
             elif selecao_de_bebidas == 3:
-                lista_de_compras.append(int(input('Quantidade de SUCO: ')) * 3.59)
+                lista_de_compras.append(int(input('Quantidade: ')) * 3.59)
             elif selecao_de_bebidas == 4:
-                lista_de_compras.append(int(input('Quantidade de CAFÉ: ')) * 1.99)
+                lista_de_compras.append(int(input('Quantidade: ')) * 1.99)
             else:
-                print('Esse número digitado não corresponde a nenhuma produto!')
+                print('\033[31mEsse número digitado não corresponde a nenhum produto!\033[m')
+
+        elif escolha_menu == 3:
+            print('_'*50)
+            print('\033[40m MENU ROUPAS: \033[m')
+            print('[1] CAMISA - R$29,90 -- [2] CALÇA  - R$45,99'
+                  '\n[3] MEIA   - R$ 9,99 -- [4] CASACO - R$69,90')
+
+            selecao_de_roupas = int(input('Selecione o Produto: ').strip())
+            if selecao_de_roupas == 1:
+                lista_de_compras.append(int(input('Quantidade: ')) * 29.9)
+            elif selecao_de_roupas == 2:
+                lista_de_compras.append(int(input('Quantidade: ')) * 45.99)
+            elif selecao_de_roupas == 3:
+                lista_de_compras.append(int(input('Quantidade: ')) * 9.99)
+            elif selecao_de_roupas == 4:
+                lista_de_compras.append(int(input('Quantidade: ')) * 69.9)
+            else:
+                print('\033[31mEsse número digitado não corresponde a nenhum produto\033[m')
+
 
 
         r = str(input('Deseja continuar comprando?[S/N]: ')).strip().upper()
         if r == 'N':
             break
-print(lista_de_compras)
+print('_'*50)
 valor_total = sum(lista_de_compras)
 print(f'Valor total: R${valor_total:.2f}')
 print('-'*30)
-print('À vista DINHEIRO/CHEQUE [1]\nÀ vista no cartão       [2]\nEm até 2x no cartão '
-      '    [3]\n3x ou mais no cartão    [4]')
+print('\033[7;40mÀ vista DINHEIRO/CHEQUE [1]\033[m\n\033[7;40mÀ vista no cartão       [2]\033[m\n\033[7;40mEm até 2x no cartão '
+      '    [3]\033[m\n\033[7;40m3x ou mais no cartão    [4]\033[m')
 print('-'*30)
 CP = int(input('Qual a condição de pagamento? '))
 if CP == 1:
