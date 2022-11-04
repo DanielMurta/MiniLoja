@@ -1,13 +1,13 @@
 def cabecalho_loja():
-    print('='*30)
-    print('  \033[4;30;46m BEM-VINDO A MINI LOJA \033[m')
-    print('='*30)
+    print('\033[30;45m \033[m'*30)
+    print('\033[30;45m    BEM-VINDO A MINI LOJA     \033[m')
+    print('\033[30;45m \033[m'*30)
 
 
 def menu_loja():
-    print('\033[45m MENU: \033[m')
-    print('COMIDAS [1]     ROUPAS     [3]')
-    print('BEBIDAS [2]     BRINQUEDOS [4]')
+    print('\033[30;44m MENU: \033[m')
+    print('\033[4mCOMIDAS [1]\033[m     \033[4mROUPAS     [3]\033[m \n\033[4mBEBIDAS [2]\033[m     '
+          '\033[4mBRINQUEDOS [4]\033[m')
 
 
 lista_de_compras = []
@@ -19,7 +19,7 @@ while True:
     valor_total = sum(lista_de_compras)
     if valor_total != 0:
         print(f'O valor parcial da sua compra é \033[32mR${valor_total:.2f}\033[m')
-    escolha_menu = int(input('O que deseja comprar? \033[33m(0 p/ finalizar compra)\033[m: '))
+    escolha_menu = int(input('O que deseja comprar? \033[30;41m(0 p/ finalizar compra)\033[m: '))
     if escolha_menu == 0:
         break
     while True:
@@ -91,21 +91,44 @@ while True:
             break
 print('_'*50)
 valor_total = sum(lista_de_compras)
-print(f'Valor total: R${valor_total:.2f}')
-print('-'*30)
-print('\033[7;40mÀ vista DINHEIRO/CHEQUE [1]\033[m\n\033[7;40mÀ vista no cartão       [2]\033[m\n\033[7;40mEm até 2x no cartão '
-      '    [3]\033[m\n\033[7;40m3x ou mais no cartão    [4]\033[m')
-print('-'*30)
-CP = int(input('Qual a condição de pagamento? '))
-if CP == 1:
-    print("Com desconto de 10% o valor será de R${:.2f}".format(valor_total - (valor_total*0.1)))
-elif CP == 2:
-    print('Com desconto de 5% o valor será de R${:.2f}'.format(valor_total - (valor_total*0.05)))
-elif CP == 3:
-    print('R${:.2f} parcelado em 2x'.format(valor_total))
-elif CP == 4:
-    parcela = int(input('Nº Parcelas: '))
-    print('Sua compra será parcelada em {}x.'.format(parcela))
-    print('O total será R${:.2f} com juros de 20%.'.format(valor_total + valor_total*0.2))
-else:
-    print("Opção inválida de pagamento. Tente novamente!")
+print(f'Valor total: R$\033[32m{valor_total:.2f}\033[m')
+while True:
+    if valor_total == 0:
+        break
+    else:
+        print('-'*28)
+        print('\033[7;40m À vista DINHEIRO/CHEQUE [1]\033[m\n\033[7;40m À vista no cartão       [2]\033[m\n\033[7;40m Em até 2x no cartão '
+            '    [3]\033[m\n\033[7;40m 3x ou mais no cartão    [4]\033[m')
+        print('-'*28)
+        CP = int(input('Qual a condição de pagamento? '))
+        if CP == 1:
+            print()
+            print("\033[30;47m Com desconto de 10% o valor será de R${:.2f} \033[m".format(valor_total - (valor_total*0.1)))
+            print('Volte sempre!')
+            break
+        elif CP == 2:
+            print()
+            print('\033[30;47m Com desconto de 5% o valor será de R${:.2f} \033[m'.format(valor_total - (valor_total*0.05)))
+            print('Volte sempre!')
+            break
+        elif CP == 3:
+            print()
+            print('\033[30;47m R${:.2f} parcelado em 2x \033[m'.format(valor_total))
+            print('Volte sempre!')
+            break
+        elif CP == 4:
+            print()
+            while True:
+                parcela = int(input('Nº Parcelas: '))
+                if parcela <= 2:
+                    print('\033[4;30;41m O valor da parcela deve ser acima de 3x. \033[m')
+                else:
+                    break
+
+            print('_'*50)
+            print('Sua compra será parcelada em {}x.'.format(parcela))
+            print('\033[30;47m O total será R${:.2f} com juros de 20%.\033[m'.format(valor_total + valor_total*0.2))
+            print('Volte sempre!')
+            break
+        else:
+            print("\033[4;30;41m Opção inválida de pagamento. Tente novamente! \033[m")
