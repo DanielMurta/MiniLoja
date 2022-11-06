@@ -10,6 +10,13 @@ def menu_loja():
           '\033[4mBRINQUEDOS [4]\033[m')
 
 
+def volte_sempre():
+    print()
+    print('\033[30;42m \033[m'*30)
+    print('\033[30;42m        VOLTE SEMPRE!         \033[m')
+    print('\033[30;42m \033[m'*30)
+
+
 lista_de_compras = []
 cabecalho_loja()
 while True:
@@ -84,8 +91,13 @@ while True:
             else:
                 print('\033[31mEsse número digitado não corresponde a nenhum produto\033[m')
 
+        elif escolha_menu == 4:
+            print('\033[4;33mSEÇÃO EM CONSTRUÇÃO!\033[m')
 
 
+        else:
+            print('\033[4;31mEsse número não corresponde a nenhuma seção!\033[m')
+            print()
         r = str(input('Deseja continuar comprando?[S/N]: ')).strip().upper()
         if r == 'N':
             break
@@ -104,17 +116,14 @@ while True:
         if CP == 1:
             print()
             print("\033[30;47m Com desconto de 10% o valor será de R${:.2f} \033[m".format(valor_total - (valor_total*0.1)))
-            print('Volte sempre!')
             break
         elif CP == 2:
             print()
             print('\033[30;47m Com desconto de 5% o valor será de R${:.2f} \033[m'.format(valor_total - (valor_total*0.05)))
-            print('Volte sempre!')
             break
         elif CP == 3:
             print()
             print('\033[30;47m R${:.2f} parcelado em 2x \033[m'.format(valor_total))
-            print('Volte sempre!')
             break
         elif CP == 4:
             print()
@@ -128,7 +137,8 @@ while True:
             print('_'*50)
             print('Sua compra será parcelada em {}x.'.format(parcela))
             print('\033[30;47m O total será R${:.2f} com juros de 20%.\033[m'.format(valor_total + valor_total*0.2))
-            print('Volte sempre!')
             break
         else:
             print("\033[4;30;41m Opção inválida de pagamento. Tente novamente! \033[m")
+
+volte_sempre()
