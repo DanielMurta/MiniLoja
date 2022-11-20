@@ -1,32 +1,15 @@
-def cabecalho_loja():
-    print('\033[30;45m \033[m'*30)
-    print('\033[30;45m    BEM-VINDO A MINI LOJA     \033[m')
-    print('\033[30;45m \033[m'*30)
-
-
-def menu_loja():
-    print('\033[30;44m MENU: \033[m')
-    print('\033[4mCOMIDAS [1]\033[m     \033[4mROUPAS     [3]\033[m \n\033[4mBEBIDAS [2]\033[m     '
-          '\033[4mBRINQUEDOS [4]\033[m')
-
-
-def volte_sempre():
-    print()
-    print('\033[30;42m \033[m'*30)
-    print('\033[30;42m        VOLTE SEMPRE!         \033[m')
-    print('\033[30;42m \033[m'*30)
-
+import Defs
 
 lista_de_compras = []
-cabecalho_loja()
+Defs.cabecalho_loja()
 while True:
     print('_'*30)
-    menu_loja()
+    Defs.menu_loja()
     print()
     valor_total = sum(lista_de_compras)
     if valor_total != 0:
         print(f'O valor parcial da sua compra é \033[32mR${valor_total:.2f}\033[m')
-    escolha_menu = int(input('O que deseja comprar? \033[30;41m(0 p/ finalizar compra)\033[m: '))
+    escolha_menu = int(input('O que deseja comprar? \033[36m(0 p/ finalizar compra)\033[m: '))
     if escolha_menu == 0:
         break
     while True:
@@ -101,6 +84,14 @@ while True:
         r = str(input('Deseja continuar comprando?[S/N]: ')).strip().upper()
         if r == 'N':
             break
+        while r != 'S':
+            print('\033[4;31mDigite uma opção válida\033[m! ')
+            r = str(input('Deseja continuar comprando?[S/N]: ')).strip().upper()
+            if r == 'N':
+                break
+        if r == 'N':
+            break
+
 print('_'*50)
 valor_total = sum(lista_de_compras)
 print(f'Valor total: R$\033[32m{valor_total:.2f}\033[m')
@@ -141,4 +132,4 @@ while True:
         else:
             print("\033[4;30;41m Opção inválida de pagamento. Tente novamente! \033[m")
 
-volte_sempre()
+Defs.volte_sempre()
