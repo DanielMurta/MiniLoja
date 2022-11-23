@@ -5,9 +5,47 @@ def ListasComprasParcial():
         print(f'O valor parcial da sua compra é \033[32mR${valor_parcial:.2f}\033[m')
 
 
-def ListaComprasFinal():
+def Pagamento():
     valor_total = sum(lista_de_compras)
     print(f'Valor total: R$\033[32m{valor_total:.2f}\033[m')
+    while True:
+        if valor_total == 0:
+            break
+        else:
+            print('-' * 28)
+            print(
+                '\033[7;40m À vista DINHEIRO        [1]\033[m\n\033[7;40m À vista no cartão       [2]\033[m'
+                '\n\033[7;40m Em até 2x no cartão '
+                '    [3]\033[m\n\033[7;40m 3x ou mais no cartão    [4]\033[m')
+            print('-' * 28)
+            CP = int(input('Qual a condição de pagamento? '))
+            if CP == 1:
+                print()
+                print("Com desconto de 10% o valor será de R${:.2f}".format(valor_total - (valor_total*0.1)))
+                cedula = int(input('Valor da cédula: R$ '))
+                print(f'O seu troco é R$ {cedula - (valor_total - (valor_total*0.1)):.2f}')
+
+                break
+            elif CP == 2:
+                print('Com desconto de 5% o valor será de R${:.2f}'.format(valor_total - (valor_total*0.05)))
+                break
+            elif CP == 3:
+                print(f'R${valor_total:.2f} parcelado em 2x de {valor_total/2:.2f}')
+                break
+            elif CP == 4:
+                print()
+                while True:
+                    parcela = int(input('Nº Parcelas: '))
+                    if parcela <= 2:
+                        print('O valor da parcela deve ser acima de 3x.')
+                    else:
+                        break
+
+                print('O total será R${:.2f} com juros de 20%.'.format(valor_total + valor_total*0.2))
+                print(f'Sua compra será parcelada em {parcela}x de {(valor_total + valor_total*0.2)/parcela:.2f}')
+                break
+            else:
+                print("\033[4;30;41m Opção inválida de pagamento. Tente novamente! \033[m")
 
 def cabecalho_loja():
     print('\033[30;41m \033[m'*30)

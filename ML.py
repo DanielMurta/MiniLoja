@@ -43,43 +43,6 @@ while True:
         print('Digite um número')
 
 print('_'*50)
-Defs.ListaComprasFinal()
-while True:
-    if Defs.ListaComprasFinal() == 0:
-        break
-    else:
-        print('-'*28)
-        print('\033[7;40m À vista DINHEIRO    [1]\033[m\n\033[7;40m À vista no cartão       [2]\033[m\n\033[7;40m Em até 2x no cartão '
-            '    [3]\033[m\n\033[7;40m 3x ou mais no cartão    [4]\033[m')
-        print('-'*28)
-        CP = int(input('Qual a condição de pagamento? '))
-        if CP == 1:
-            print()
-            #print("Com desconto de 10% o valor será de R${:.2f}".format(valor_total - (valor_total*0.1)))
-
-            break
-        elif CP == 2:
-            print()
-            #print('Com desconto de 5% o valor será de R${:.2f}'.format(valor_total - (valor_total*0.05)))
-            break
-        elif CP == 3:
-            print()
-            #print('R${:.2f} parcelado em 2x'.format(valor_total))
-            break
-        elif CP == 4:
-            print()
-            while True:
-                parcela = int(input('Nº Parcelas: '))
-                if parcela <= 2:
-                    print('O valor da parcela deve ser acima de 3x.')
-                else:
-                    break
-
-            print('_'*50)
-            print('Sua compra será parcelada em {}x.'.format(parcela))
-            #print('O total será R${:.2f} com juros de 20%.'.format(valor_total + valor_total*0.2))
-            break
-        else:
-            print("\033[4;30;41m Opção inválida de pagamento. Tente novamente! \033[m")
-
+Defs.Pagamento()
+print('-'*28)
 Defs.volte_sempre()
